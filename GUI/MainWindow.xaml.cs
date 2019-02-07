@@ -50,7 +50,22 @@ namespace GUI
 
         private void NewGameButton_Click(object sender, RoutedEventArgs e)
         {
-            game = new Game(Player1TB.Text, Player2TB.Text);
+            if (Player1TB.Text == "" || Player2TB.Text != "")
+            {
+                //Constru med en!
+            }
+            else if (Player2TB.Text == "" || Player1TB.Text != "")
+            {
+                //Constru med en!
+            }
+            else if (Player1TB.Text == "" || Player2TB.Text == "")
+            {
+                //Constru med to!
+            }
+            else
+            {
+                game = new Game(Player1TB.Text, Player2TB.Text);
+            }
             game.RegisterSubscriber(this);
             turns = int.Parse(NumbersofTurnsTB.Text);
             StartUp();
