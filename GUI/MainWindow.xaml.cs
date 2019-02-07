@@ -22,6 +22,7 @@ namespace GUI
     public partial class MainWindow : Window, ISubscriber
     {
         Game game;
+        int turns;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,36 +30,31 @@ namespace GUI
 
         private void NextTurnButton_Click(object sender, RoutedEventArgs e)
         {
-            //while (!game.IsEndGame())
-            //{
-            //    game.Turn();
-            //    //ImagePlayerOne.Source = game.Player1.Deck[0].Picture;
-            //    NumberOfTurnsLabel.Content = "Numbers of turns: " + game.TurnCount;
-            //}
-            //if (game.IsEndGame())
-            //{
-            //    NextTurnButton.IsEnabled = false;
-            //    NumberOfTurnsLabel.IsEnabled = false;
-            //    WhoIsTheWinnerLabel.IsEnabled = false;
-            //}
+            game.Turn();
         }
 
         private void NewGameButton_Click(object sender, RoutedEventArgs e)
         {
             game = new Game(Player1TB.Text, Player2TB.Text);
             game.RegisterSubscriber(this);
+            turns = int.Parse(NumbersofTurnsTB.Text);
             NextTurnButton.IsEnabled = true;
             NumberOfTurnsLabel.IsEnabled = true;
             WhoIsTheWinnerLabel.IsEnabled = true;
             Player1CardsLabel.IsEnabled = true;
             Player2CardsLabel.IsEnabled = true;
+
+            Player1TB.IsEnabled = false;
+            Player2TB.IsEnabled = false;
+            NumbersofTurnsTB.IsEnabled = false;
+            NewGameButton.IsEnabled = false;
         }
 
         public void Update(IPublisher publisher)
         {
-            Player1CardsLabel.Content = game.Player1.Deck.Count;
-            Player2CardsLabel.Content = game.Player2.Deck.Count;
-            NumberOfTurnsLabel.Content = game.TurnCount;
+            Player1CardsLabel.Content = game.Player1.Name + " has " + game.Player1.Deck.Count + " cards left in deck";
+            Player2CardsLabel.Content = game.Player2.Name + " has " + game.Player2.Deck.Count + " cards left in deck";
+            NumberOfTurnsLabel.Content = "Number of turns " + game.TurnCount + " out of " + turns;
         }
     }
 }

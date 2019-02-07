@@ -38,23 +38,6 @@ namespace CardWar
             Player2.Deck = deck2;
         }
 
-        public bool IsEndGame()
-        {
-            if (!Player1.Deck.Any())
-            {
-                return true;
-            }
-            else if (!Player2.Deck.Any())
-            {
-                return true;
-            }
-            else if (TurnCount > 10)
-            {
-                return true;
-            }
-            return false;
-        }
-
         public void Turn()
         {
             var cardbool = new List<Card>();
