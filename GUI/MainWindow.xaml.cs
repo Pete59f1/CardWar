@@ -48,10 +48,6 @@ namespace GUI
             Player2TB.IsEnabled = false;
             NumbersofTurnsTB.IsEnabled = false;
             NewGameButton.IsEnabled = false;
-
-            Player1CardsLabel.Content = game.Player1.Name + " has " + game.Player1.Deck.Count + " cards left in deck";
-            Player2CardsLabel.Content = game.Player2.Name + " has " + game.Player2.Deck.Count + " cards left in deck";
-            NumberOfTurnsLabel.Content = "Number of turns " + game.TurnCount + " out of " + turns;
         }
 
         public void Update(IPublisher publisher)

@@ -7,16 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Image Name="ImagePlayerOne" IsEnabled="False" HorizontalAlignment="Left" Height="200" Margin="55,48,0,0" VerticalAlignment="Top" Width="150"/>
-        <Image Name="ImagePlayerTwo" IsEnabled="False" HorizontalAlignment="Left" Height="200" Margin="275,48,0,0" VerticalAlignment="Top" Width="150"/>
-        <Button Name="NextTurnButton" IsEnabled="False" Content="Next Turn" HorizontalAlignment="Left" Margin="181,273,0,0" VerticalAlignment="Top" Width="75" Click="NextTurnButton_Click" Height="30"/>
-        <Label Name="NumberOfTurnsLabel" IsEnabled="False" Content="Numbers of turns:" HorizontalAlignment="Left" Margin="162,379,0,0" VerticalAlignment="Top" Height="30"/>
-        <Label Name="WhoIsTheWinnerLabel" IsEnabled="False" Content="The winner is " HorizontalAlignment="Left" Margin="181,342,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,-0.692"/>
+        <Image Name="ImagePlayerOne" IsEnabled="False" HorizontalAlignment="Left" Height="200" Margin="35,48,0,0" VerticalAlignment="Top" Width="150"/>
+        <Image Name="ImagePlayerTwo" IsEnabled="False" HorizontalAlignment="Left" Height="200" Margin="340,48,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button Name="NextTurnButton" IsEnabled="False" Content="Next Turn" HorizontalAlignment="Left" Margin="220,130,0,0" VerticalAlignment="Top" Width="75" Click="NextTurnButton_Click" Height="30" RenderTransformOrigin="0.12,0.533"/>
+        <Label Name="NumberOfTurnsLabel" IsEnabled="False" Content="Numbers of turns:" HorizontalAlignment="Left" Margin="168,365,0,0" VerticalAlignment="Top" Height="30" Width="182"/>
+        <Label Name="WhoIsTheWinnerLabel" IsEnabled="False" Content="The winner is " HorizontalAlignment="Left" Margin="627,336,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,-0.692"/>
         <TextBox Name="Player1TB" HorizontalAlignment="Left" Height="23" Margin="627,69,0,0" TextWrapping="Wrap" ToolTip="Player 1 name" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="Player2TB" HorizontalAlignment="Left" Height="23" Margin="627,127,0,0" TextWrapping="Wrap" ToolTip="PLayer 2 name" VerticalAlignment="Top" Width="120"/>
         <Button Name="NewGameButton" Content="Start new game" HorizontalAlignment="Left" Margin="627,247,0,0" VerticalAlignment="Top" Width="103" Click="NewGameButton_Click"/>
-        <Label Name="Player1CardsLabel" IsEnabled="False" Content="Numbers of cards" HorizontalAlignment="Left" Margin="39,277,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.288,0.577"/>
-        <Label Name="Player2CardsLabel" IsEnabled="False" Content="Numbers of cards" HorizontalAlignment="Left" Margin="340,273,0,0" VerticalAlignment="Top"/>
+        <Label Name="Player1CardsLabel" IsEnabled="False" Content="Numbers of cards" HorizontalAlignment="Left" Margin="35,311,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.288,0.577" Width="182"/>
+        <Label Name="Player2CardsLabel" IsEnabled="False" Content="Numbers of cards" HorizontalAlignment="Left" Margin="340,311,0,0" VerticalAlignment="Top" Width="182"/>
         <TextBox Name="NumbersofTurnsTB" HorizontalAlignment="Left" Height="23" Margin="627,185,0,0" TextWrapping="Wrap" ToolTip="Number of turns" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
