@@ -13,7 +13,7 @@ namespace CardWar
         public int TurnCount;
         List<ISubscriber> subs = new List<ISubscriber>();
 
-        public Game(string player1name):
+        public Game(string player1name) :
             this(player1name, "Player 2")
         {
         }
