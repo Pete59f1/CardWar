@@ -30,7 +30,22 @@ namespace GUI
 
         private void NextTurnButton_Click(object sender, RoutedEventArgs e)
         {
-            game.Turn();
+            if (game.TurnCount > turns)
+            {
+                Terminate();
+            }
+            else if (game.Player1.Deck.Count < 1)
+            {
+                Terminate();
+            }
+            else if (game.Player2.Deck.Count < 1)
+            {
+                Terminate();
+            }
+            else
+            {
+                game.Turn();
+            }
         }
 
         private void NewGameButton_Click(object sender, RoutedEventArgs e)
@@ -64,6 +79,24 @@ namespace GUI
             Player1CardsLabel.Content = game.Player1.Name + " has " + game.Player1.Deck.Count + " cards left in deck";
             Player2CardsLabel.Content = game.Player2.Name + " has " + game.Player2.Deck.Count + " cards left in deck";
             NumberOfTurnsLabel.Content = "Number of turns " + game.TurnCount + " out of " + turns;
+        }
+
+        public void Terminate()
+        {
+            Player1CardsLabel.Content = "";
+            Player2CardsLabel.Content = "";
+            NumberOfTurnsLabel.Content = "";
+
+            NextTurnButton.IsEnabled = false;
+            NumberOfTurnsLabel.IsEnabled = false;
+            WhoIsTheWinnerLabel.IsEnabled = false;
+            Player1CardsLabel.IsEnabled = false;
+            Player2CardsLabel.IsEnabled = false;
+
+            Player1TB.IsEnabled = true;
+            Player2TB.IsEnabled = true;
+            NumbersofTurnsTB.IsEnabled = true;
+            NewGameButton.IsEnabled = true;
         }
     }
 }
