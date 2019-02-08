@@ -63,6 +63,30 @@ namespace CardWar
                 {
                     picture += "2.png";
                 }
+                else if (value.Equals(3))
+                {
+                    picture += "3.png";
+                }
+                else if (value.Equals(4))
+                {
+                    picture += "4.png";
+                }
+                else if (value.Equals(5))
+                {
+                    picture += "5.png";
+                }
+                else if (value.Equals(6))
+                {
+                    picture += "6.png";
+                }
+                else if (value.Equals(7))
+                {
+                    picture += "7.png";
+                }
+                else if (value.Equals(8))
+                {
+                    picture += "8.png";
+                }
             }
             return picture;
         }
