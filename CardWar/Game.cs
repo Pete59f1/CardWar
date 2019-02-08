@@ -37,7 +37,6 @@ namespace CardWar
         public void Turn()
         {
             var cardbool = new List<Card>();
-            NotifySubscribers();
 
             Card player1Card = Player1.Deck[0];
             Card player2Card = Player2.Deck[0];
@@ -64,40 +63,41 @@ namespace CardWar
                 //Ligger tre kort ned
                 Card player1Card2 = Player1.Deck[0];
                 Card player2Card2 = Player2.Deck[0];
-                warbool.Add(player1Card2);
-                warbool.Add(player2Card2);
+                cardbool.Add(player1Card2);
+                cardbool.Add(player2Card2);
                 Player1.Deck.Remove(Player1.Deck[0]);
                 Player2.Deck.Remove(Player2.Deck[0]);
                 Card player1Card3 = Player1.Deck[0];
                 Card player2Card3 = Player2.Deck[0];
-                warbool.Add(player1Card3);
-                warbool.Add(player2Card3);
+                cardbool.Add(player1Card3);
+                cardbool.Add(player2Card3);
                 Player1.Deck.Remove(Player1.Deck[0]);
                 Player2.Deck.Remove(Player2.Deck[0]);
                 Card player1Card4 = Player1.Deck[0];
                 Card player2Card4 = Player2.Deck[0];
-                warbool.Add(player1Card4);
-                warbool.Add(player2Card4);
+                cardbool.Add(player1Card4);
+                cardbool.Add(player2Card4);
                 Player1.Deck.Remove(Player1.Deck[0]);
                 Player2.Deck.Remove(Player2.Deck[0]);
 
                 //Ligger kort nr 4
                 Card player1Card5 = Player1.Deck[0];
                 Card player2Card5 = Player2.Deck[0];
-                warbool.Add(player1Card5);
-                warbool.Add(player2Card5);
+                cardbool.Add(player1Card5);
+                cardbool.Add(player2Card5);
                 Player1.Deck.Remove(Player1.Deck[0]);
                 Player2.Deck.Remove(Player2.Deck[0]);
 
                 if (player1Card5.Value < player2Card5.Value)
                 {
-                    Player2.Deck.AddRange(warbool);
+                    Player2.Deck.AddRange(cardbool);
                 }
                 else
                 {
-                    Player1.Deck.AddRange(warbool);
+                    Player1.Deck.AddRange(cardbool);
                 }
                 TurnCount++;
+                NotifySubscribers();
             }
 
             if (player1Card.Value < player2Card.Value)
@@ -109,6 +109,7 @@ namespace CardWar
                 Player1.Deck.AddRange(cardbool);
             }
             TurnCount++;
+            NotifySubscribers();
         }
 
         //private void War(Card player1Card, Card player2Card)

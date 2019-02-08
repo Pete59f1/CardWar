@@ -30,7 +30,7 @@ namespace GUI
 
         private void NextTurnButton_Click(object sender, RoutedEventArgs e)
         {
-            if (game.TurnCount > turns)
+            if (game.TurnCount >= turns)
             {
                 Terminate();
             }
