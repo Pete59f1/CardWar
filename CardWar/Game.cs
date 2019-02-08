@@ -13,18 +13,15 @@ namespace CardWar
         public int TurnCount;
         List<ISubscriber> subs = new List<ISubscriber>();
 
-        public Game(string player1name) :
-            this(player1name, "Player 2")
-        {
-        }
-        public Game(string player2name) :
-            this("Player 1", player2name)
-        {
-        }
-        public Game() :
-            this("Player 1", "Player 2")
-        {
-        }
+        //public Game(string player1name) :
+        //    this(player1name, "Player 2")
+        //{
+        //}
+
+        //public Game() :
+        //    this("Player 1", "Player 2")
+        //{
+        //}
 
         public Game (string player1name, string player2name)
         {

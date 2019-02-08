@@ -50,24 +50,25 @@ namespace GUI
 
         private void NewGameButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Player1TB.Text == "" || Player2TB.Text != "")
+            game = new Game(Player1TB.Text, Player2TB.Text);
+            game.RegisterSubscriber(this);
+            int tryparser;
+
+            if (NumbersofTurnsTB.Text != null)
             {
-                //Constru med en!
-            }
-            else if (Player2TB.Text == "" || Player1TB.Text != "")
-            {
-                //Constru med en!
-            }
-            else if (Player1TB.Text == "" || Player2TB.Text == "")
-            {
-                //Constru med to!
+                if (int.TryParse(NumbersofTurnsTB.Text, out tryparser))
+                {
+                    turns = int.Parse(NumbersofTurnsTB.Text);
+                }
+                else
+                {
+                    turns = 20;
+                }
             }
             else
             {
-                game = new Game(Player1TB.Text, Player2TB.Text);
+                turns = 20;
             }
-            game.RegisterSubscriber(this);
-            turns = int.Parse(NumbersofTurnsTB.Text);
             StartUp();
         }
 
