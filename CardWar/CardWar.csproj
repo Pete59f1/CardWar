@@ -54,5 +54,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="CardImages\Clubs10.PNG" />
+    <Content Include="CardImages\Clubs2.PNG" />
+    <Content Include="CardImages\Clubs3.PNG" />
+    <Content Include="CardImages\Clubs4.PNG" />
+    <Content Include="CardImages\Clubs5.PNG" />
+    <Content Include="CardImages\Clubs6.PNG" />
+    <Content Include="CardImages\Clubs7.PNG" />
+    <Content Include="CardImages\Clubs8.PNG" />
+    <Content Include="CardImages\Clubs9.PNG" />
+    <Content Include="CardImages\ClubsACE.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

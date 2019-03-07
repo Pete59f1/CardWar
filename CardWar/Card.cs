@@ -34,21 +34,21 @@ namespace CardWar
             }
             else if (value == 11)
             {
-                shortName = "JACK ";
+                shortName = "JACK";
             }
             else if (value == 12)
             {
-                shortName = "QUEEN ";
+                shortName = "QUEEN";
             }
             else if (value == 13)
             {
-                shortName = "KING ";
+                shortName = "KING";
             }
-            else if (value == 14)
+            else
             {
-                shortName = "ACE ";
+                shortName = "ACE";
             }
-            return shortName + " " + Enum.GetName(typeof(Suit), suit);
+            return shortName + " of " + Enum.GetName(typeof(Suit), suit);
         }
 
         public static string AddPicture(int value, Suit suit)
@@ -57,35 +57,98 @@ namespace CardWar
 
             if (suit.Equals(Suit.Clubs))
             {
-                picture = @"\CardWar\CardPic\Clubs";
-
-                if (value.Equals(2))
+                picture = @"\CardWar\CardImages\Clubs";
+                if (value >= 2 && value <= 10)
                 {
-                    picture += "2.png";
+                    picture += value + ".png";
                 }
-                else if (value.Equals(3))
+                else if (value == 11)
                 {
-                    picture += "3.png";
+                    picture += "JACK.png";
                 }
-                else if (value.Equals(4))
+                else if (value == 12)
                 {
-                    picture += "4.png";
+                    picture += "QUEEN.png";
                 }
-                else if (value.Equals(5))
+                else if (value == 13)
                 {
-                    picture += "5.png";
+                    picture += "KING.png";
                 }
-                else if (value.Equals(6))
+                else
                 {
-                    picture += "6.png";
+                    picture += "ACE.png";
                 }
-                else if (value.Equals(7))
+            }
+            else if (suit.Equals(Suit.Spades))
+            {
+                picture = @"\CardWar\CardImages\Spades";
+                if (value >= 2 && value <= 10)
                 {
-                    picture += "7.png";
+                    picture += value + ".png";
                 }
-                else if (value.Equals(8))
+                else if (value == 11)
                 {
-                    picture += "8.png";
+                    picture += "JACK.png";
+                }
+                else if (value == 12)
+                {
+                    picture += "QUEEN.png";
+                }
+                else if (value == 13)
+                {
+                    picture += "KING.png";
+                }
+                else
+                {
+                    picture += "ACE.png";
+                }
+            }
+            else if (suit.Equals(Suit.Hearts))
+            {
+                picture = @"\CardWar\CardImages\Hearts";
+                if (value >= 2 && value <= 10)
+                {
+                    picture += value + ".png";
+                }
+                else if (value == 11)
+                {
+                    picture += "JACK.png";
+                }
+                else if (value == 12)
+                {
+                    picture += "QUEEN.png";
+                }
+                else if (value == 13)
+                {
+                    picture += "KING.png";
+                }
+                else
+                {
+                    picture += "ACE.png";
+                }
+            }
+            else
+            {
+                picture = @"\CardWar\CardImages\Diamonds";
+                if (value >= 2 && value <= 10)
+                {
+                    picture += value + ".png";
+                }
+                else if (value == 11)
+                {
+                    picture += "JACK.png";
+                }
+                else if (value == 12)
+                {
+                    picture += "QUEEN.png";
+                }
+                else if (value == 13)
+                {
+                    picture += "KING.png";
+                }
+                else
+                {
+                    picture += "ACE.png";
                 }
             }
             return picture;

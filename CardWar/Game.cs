@@ -112,62 +112,6 @@ namespace CardWar
             NotifySubscribers();
         }
 
-        //private void War(Card player1Card, Card player2Card)
-        //{
-        //    List<Card> warbool = new List<Card>();
-        //    while (player1Card.Value == player2Card.Value)
-        //    {
-        //        if (Player1.Deck.Count < 4)
-        //        {
-        //            Player1.Deck.Clear();
-        //            return;
-        //        }
-        //        if (Player2.Deck.Count < 4)
-        //        {
-        //            Player2.Deck.Clear();
-        //            return;
-        //        }
-
-        //        //Ligger tre kort ned
-        //        Card player1Card2 = Player1.Deck[0];
-        //        Card player2Card2 = Player2.Deck[0];
-        //        warbool.Add(player1Card2);
-        //        warbool.Add(player2Card2);
-        //        Player1.Deck.Remove(Player1.Deck[0]);
-        //        Player2.Deck.Remove(Player2.Deck[0]);
-        //        Card player1Card3 = Player1.Deck[0];
-        //        Card player2Card3 = Player2.Deck[0];
-        //        warbool.Add(player1Card3);
-        //        warbool.Add(player2Card3);
-        //        Player1.Deck.Remove(Player1.Deck[0]);
-        //        Player2.Deck.Remove(Player2.Deck[0]);
-        //        Card player1Card4 = Player1.Deck[0];
-        //        Card player2Card4 = Player2.Deck[0];
-        //        warbool.Add(player1Card4);
-        //        warbool.Add(player2Card4);
-        //        Player1.Deck.Remove(Player1.Deck[0]);
-        //        Player2.Deck.Remove(Player2.Deck[0]);
-
-        //        //Ligger kort nr 4
-        //        Card player1Card5 = Player1.Deck[0];
-        //        Card player2Card5 = Player2.Deck[0];
-        //        warbool.Add(player1Card5);
-        //        warbool.Add(player2Card5);
-        //        Player1.Deck.Remove(Player1.Deck[0]);
-        //        Player2.Deck.Remove(Player2.Deck[0]);
-
-        //        if (player1Card5.Value < player2Card5.Value)
-        //        {
-        //            Player2.Deck.AddRange(warbool);
-        //        }
-        //        else
-        //        {
-        //            Player1.Deck.AddRange(warbool);
-        //        }
-        //        TurnCount++;
-        //    }
-        //}
-
         public void RegisterSubscriber(ISubscriber observer)
         {
             subs.Add(observer);
