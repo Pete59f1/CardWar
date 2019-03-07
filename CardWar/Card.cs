@@ -58,98 +58,43 @@ namespace CardWar
             if (suit.Equals(Suit.Clubs))
             {
                 picture = @"\CardWar\CardImages\Clubs";
-                if (value >= 2 && value <= 10)
-                {
-                    picture += value + ".png";
-                }
-                else if (value == 11)
-                {
-                    picture += "JACK.png";
-                }
-                else if (value == 12)
-                {
-                    picture += "QUEEN.png";
-                }
-                else if (value == 13)
-                {
-                    picture += "KING.png";
-                }
-                else
-                {
-                    picture += "ACE.png";
-                }
             }
             else if (suit.Equals(Suit.Spades))
             {
                 picture = @"\CardWar\CardImages\Spades";
-                if (value >= 2 && value <= 10)
-                {
-                    picture += value + ".png";
-                }
-                else if (value == 11)
-                {
-                    picture += "JACK.png";
-                }
-                else if (value == 12)
-                {
-                    picture += "QUEEN.png";
-                }
-                else if (value == 13)
-                {
-                    picture += "KING.png";
-                }
-                else
-                {
-                    picture += "ACE.png";
-                }
             }
             else if (suit.Equals(Suit.Hearts))
             {
                 picture = @"\CardWar\CardImages\Hearts";
-                if (value >= 2 && value <= 10)
-                {
-                    picture += value + ".png";
-                }
-                else if (value == 11)
-                {
-                    picture += "JACK.png";
-                }
-                else if (value == 12)
-                {
-                    picture += "QUEEN.png";
-                }
-                else if (value == 13)
-                {
-                    picture += "KING.png";
-                }
-                else
-                {
-                    picture += "ACE.png";
-                }
             }
             else
             {
                 picture = @"\CardWar\CardImages\Diamonds";
-                if (value >= 2 && value <= 10)
-                {
-                    picture += value + ".png";
-                }
-                else if (value == 11)
-                {
-                    picture += "JACK.png";
-                }
-                else if (value == 12)
-                {
-                    picture += "QUEEN.png";
-                }
-                else if (value == 13)
-                {
-                    picture += "KING.png";
-                }
-                else
-                {
-                    picture += "ACE.png";
-                }
+            }
+            return picture + PictureHelper(value);
+        }
+        private static string PictureHelper(int value)
+        {
+            string picture = "";
+            if (value >= 2 && value <= 10)
+            {
+                picture += value + ".png";
+            }
+            else if (value == 11)
+            {
+                picture += "JACK.png";
+            }
+            else if (value == 12)
+            {
+                picture += "QUEEN.png";
+            }
+            else if (value == 13)
+            {
+                picture += "KING.png";
+            }
+            else
+            {
+                picture += "ACE.png";
             }
             return picture;
         }
