@@ -11,6 +11,7 @@ namespace CardWar
         public Player Player1;
         public Player Player2;
         public int TurnCount;
+        public List<Card> cardbool;
         List<ISubscriber> subs = new List<ISubscriber>();
         
 
@@ -36,7 +37,7 @@ namespace CardWar
 
         public void Turn()
         {
-            var cardbool = new List<Card>();
+            cardbool = new List<Card>();
 
             Card player1Card = Player1.Deck[0];
             Card player2Card = Player2.Deck[0];
