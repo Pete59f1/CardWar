@@ -45,6 +45,7 @@ namespace GUI
             else
             {
                 game.Turn();
+                ImagePlayerOne.Source = new BitmapImage(new Uri(game.Player1.Deck[1].Picture));
             }
         }
 
