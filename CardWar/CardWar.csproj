@@ -45,8 +45,8 @@
     <Compile Include="Card.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="IPublisher.cs" />
-    <Compile Include="ISubscriber.cs" />
+    <Compile Include="Interfaces\IPublisher.cs" />
+    <Compile Include="Interfaces\ISubscriber.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
