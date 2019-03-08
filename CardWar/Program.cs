@@ -24,7 +24,7 @@ namespace CardWar
             }
             Console.WriteLine("");
 
-            while (!game.TurnCount.Equals(10))
+            while (!game.TurnCount.Equals(100))
             {
                 game.Turn();
                 Console.WriteLine(game.Player1.Deck.Count + " " + game.Player2.Deck.Count);

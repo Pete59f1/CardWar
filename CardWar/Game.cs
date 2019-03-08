@@ -84,6 +84,7 @@ namespace CardWar
             else
             {
                 //Ens kort værdi igen. Giv kort tilbage til ejer
+                //Recursion??
                 Player1.Deck.Add(cardpool[0]);
                 Player1.Deck.Add(cardpool[2]);
                 Player1.Deck.Add(cardpool[4]);
