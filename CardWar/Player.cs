@@ -10,5 +10,12 @@ namespace CardWar
     {
         public string Name { get; set; }
         public List<Card> Deck { get; set; }
+
+        public Card DrawCard()
+        {
+            Card card = Deck[0];
+            Deck.RemoveAt(0);
+            return card;
+        }
     }
 }

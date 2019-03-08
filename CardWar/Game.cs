@@ -11,7 +11,6 @@ namespace CardWar
         public Player Player1;
         public Player Player2;
         public int TurnCount;
-        public List<Card> cardbool;
         List<ISubscriber> subs = new List<ISubscriber>();
         
 
@@ -37,80 +36,61 @@ namespace CardWar
 
         public void Turn()
         {
-            cardbool = new List<Card>();
-
-            Card player1Card = Player1.Deck[0];
-            Card player2Card = Player2.Deck[0];
-
-            cardbool.Add(player1Card);
-            cardbool.Add(player2Card);
-
-            Player1.Deck.Remove(Player1.Deck[0]);
-            Player2.Deck.Remove(Player2.Deck[0]);
-
-            while (player1Card.Value == player2Card.Value)
+            Card player1Card = Player1.DrawCard();
+            Card player2Card = Player2.DrawCard();
+            if (player1Card.Value == player2Card.Value)
             {
-                if (Player1.Deck.Count < 4)
-                {
-                    Player1.Deck.Clear();
-                    return;
-                }
-                if (Player2.Deck.Count < 4)
-                {
-                    Player2.Deck.Clear();
-                    return;
-                }
-
-                //Ligger tre kort ned
-                Card player1Card2 = Player1.Deck[0];
-                Card player2Card2 = Player2.Deck[0];
-                cardbool.Add(player1Card2);
-                cardbool.Add(player2Card2);
-                Player1.Deck.Remove(Player1.Deck[0]);
-                Player2.Deck.Remove(Player2.Deck[0]);
-                Card player1Card3 = Player1.Deck[0];
-                Card player2Card3 = Player2.Deck[0];
-                cardbool.Add(player1Card3);
-                cardbool.Add(player2Card3);
-                Player1.Deck.Remove(Player1.Deck[0]);
-                Player2.Deck.Remove(Player2.Deck[0]);
-                Card player1Card4 = Player1.Deck[0];
-                Card player2Card4 = Player2.Deck[0];
-                cardbool.Add(player1Card4);
-                cardbool.Add(player2Card4);
-                Player1.Deck.Remove(Player1.Deck[0]);
-                Player2.Deck.Remove(Player2.Deck[0]);
-
-                //Ligger kort nr 4
-                Card player1Card5 = Player1.Deck[0];
-                Card player2Card5 = Player2.Deck[0];
-                cardbool.Add(player1Card5);
-                cardbool.Add(player2Card5);
-                Player1.Deck.Remove(Player1.Deck[0]);
-                Player2.Deck.Remove(Player2.Deck[0]);
-
-                if (player1Card5.Value < player2Card5.Value)
-                {
-                    Player2.Deck.AddRange(cardbool);
-                }
-                else
-                {
-                    Player1.Deck.AddRange(cardbool);
-                }
-                TurnCount++;
-                NotifySubscribers();
-            }
-
-            if (player1Card.Value < player2Card.Value)
-            {
-                Player2.Deck.AddRange(cardbool);
+                War(player1Card, player2Card);
             }
             else
             {
-                Player1.Deck.AddRange(cardbool);
+                FindWinner(player1Card, player2Card);
             }
             TurnCount++;
             NotifySubscribers();
+        }
+
+        private void FindWinner(Card player1card, Card player2card)
+        {
+            if (player1card.Value < player2card.Value)
+            {
+                Player2.Deck.Add(player1card);
+                Player2.Deck.Add(player2card);
+            }
+            else
+            {
+                Player1.Deck.Add(player2card);
+                Player1.Deck.Add(player1card);
+            }
+        }
+        private void War(Card player1Card, Card player2Card)
+        {
+            List<Card> cardpool = new List<Card>();
+            cardpool.Add(player1Card);
+            cardpool.Add(player2Card);
+            cardpool.Add(Player1.DrawCard());
+            cardpool.Add(Player2.DrawCard());
+            cardpool.Add(Player1.DrawCard());
+            cardpool.Add(Player2.DrawCard());
+
+            if (cardpool[4].Value < cardpool[5].Value)
+            {
+                Player2.Deck.AddRange(cardpool);
+            }
+            else if (cardpool[4].Value > cardpool[5].Value)
+            {
+                Player1.Deck.AddRange(cardpool);
+            }
+            else
+            {
+                //Ens kort værdi igen. Giv kort tilbage til ejer
+                Player1.Deck.Add(cardpool[0]);
+                Player1.Deck.Add(cardpool[2]);
+                Player1.Deck.Add(cardpool[4]);
+                Player2.Deck.Add(cardpool[1]);
+                Player2.Deck.Add(cardpool[3]);
+                Player2.Deck.Add(cardpool[5]);
+            }
         }
 
         public void RegisterSubscriber(ISubscriber observer)

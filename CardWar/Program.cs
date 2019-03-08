@@ -12,16 +12,23 @@ namespace CardWar
         {
             Program myProgram = new Program();
             Game game = myProgram.StartGame();
-            foreach (Card card in game.Player1.Deck)
+
+            foreach (Card item in game.Player1.Deck)
             {
-                Console.WriteLine(card.DisplayName + " " + card.Picture);
+                Console.WriteLine(item.DisplayName);
             }
             Console.WriteLine("");
+            foreach (Card item in game.Player2.Deck)
+            {
+                Console.WriteLine(item.DisplayName);
+            }
             Console.WriteLine("");
 
-            foreach (Card card in game.Player2.Deck)
+            while (!game.TurnCount.Equals(10))
             {
-                Console.WriteLine(card.DisplayName + " " + card.Picture);
+                game.Turn();
+                Console.WriteLine(game.Player1.Deck.Count + " " + game.Player2.Deck.Count);
+                Console.WriteLine("");
             }
 
         }
