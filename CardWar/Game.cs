@@ -11,9 +11,9 @@ namespace CardWar
         public Player Player1;
         public Player Player2;
         public int TurnCount;
+        private List<Card> cardpool = new List<Card>();
         List<ISubscriber> subs = new List<ISubscriber>();
         
-
         public Game (string player1name, string player2name)
         {
             List<Card> cards = Deck.GenerateCardDeck();
@@ -36,61 +36,86 @@ namespace CardWar
 
         public void Turn()
         {
-            Card player1Card = Player1.DrawCard();
-            Card player2Card = Player2.DrawCard();
-            if (player1Card.Value == player2Card.Value)
+            if (Player1.Deck.Count >= 1 && Player2.Deck.Count >= 1)
             {
-                War(player1Card, player2Card);
+                Card player1Card = Player1.DrawCard();
+                Card player2Card = Player2.DrawCard();
+                War(player1Card, player2Card, cardpool);
             }
             else
             {
-                FindWinner(player1Card, player2Card);
+                EndGame();
             }
+
             TurnCount++;
             NotifySubscribers();
         }
-
-        private void FindWinner(Card player1card, Card player2card)
+        private void EndGame()
         {
-            if (player1card.Value < player2card.Value)
+            string winner;
+            int winnerCount;
+            if (Player1.Deck.Count > Player2.Deck.Count)
             {
-                Player2.Deck.Add(player1card);
-                Player2.Deck.Add(player2card);
+                winner = Player1.Name;
+                winnerCount = Player1.Deck.Count;
             }
             else
             {
-                Player1.Deck.Add(player2card);
-                Player1.Deck.Add(player1card);
+                winner = Player2.Name;
+                winnerCount = Player2.Deck.Count;
             }
+            throw new Exception("Game over " + winner + " is the winner with " + winnerCount + " cards");
         }
-        private void War(Card player1Card, Card player2Card)
+        private void War(Card player1Card, Card player2Card, List<Card> pool)
         {
-            List<Card> cardpool = new List<Card>();
             cardpool.Add(player1Card);
             cardpool.Add(player2Card);
-            cardpool.Add(Player1.DrawCard());
-            cardpool.Add(Player2.DrawCard());
-            cardpool.Add(Player1.DrawCard());
-            cardpool.Add(Player2.DrawCard());
-
-            if (cardpool[4].Value < cardpool[5].Value)
+            if (player1Card.Value < player2Card.Value)
             {
                 Player2.Deck.AddRange(cardpool);
+                cardpool.Clear();
             }
-            else if (cardpool[4].Value > cardpool[5].Value)
+            else if (player1Card.Value > player2Card.Value)
             {
                 Player1.Deck.AddRange(cardpool);
+                cardpool.Clear();
             }
             else
             {
-                //Ens kort værdi igen. Giv kort tilbage til ejer
-                //Recursion??
-                Player1.Deck.Add(cardpool[0]);
-                Player1.Deck.Add(cardpool[2]);
-                Player1.Deck.Add(cardpool[4]);
-                Player2.Deck.Add(cardpool[1]);
-                Player2.Deck.Add(cardpool[3]);
-                Player2.Deck.Add(cardpool[5]);
+                if (Player1.Deck.Count >= 4 && Player2.Deck.Count >= 4)
+                {
+                    cardpool.Add(Player1.DrawCard());
+                    cardpool.Add(Player2.DrawCard());
+                    cardpool.Add(Player1.DrawCard());
+                    cardpool.Add(Player2.DrawCard());
+                    cardpool.Add(Player1.DrawCard());
+                    cardpool.Add(Player2.DrawCard());
+                    Card lastCard1 = Player1.DrawCard();
+                    Card lastCard2 = Player2.DrawCard();
+
+                    if (lastCard1.Value < lastCard2.Value)
+                    {
+                        cardpool.Add(lastCard1);
+                        cardpool.Add(lastCard2);
+                        Player2.Deck.AddRange(cardpool);
+                        cardpool.Clear();
+                    }
+                    else if (lastCard1.Value > lastCard2.Value)
+                    {
+                        cardpool.Add(lastCard2);
+                        cardpool.Add(lastCard1);
+                        Player1.Deck.AddRange(cardpool);
+                        cardpool.Clear();
+                    }
+                    else
+                    {
+                        War(lastCard1, lastCard2, cardpool);
+                    }
+                }
+                else
+                {
+                    EndGame();
+                }
             }
         }
 
