@@ -11,7 +11,6 @@ namespace CardWar
         public Player Player1;
         public Player Player2;
         public int TurnCount;
-        private List<Card> cardpool = new List<Card>();
         List<ISubscriber> subs = new List<ISubscriber>();
         
         public Game (string player1name, string player2name)
@@ -36,6 +35,7 @@ namespace CardWar
 
         public void Turn()
         {
+            List<Card> cardpool = new List<Card>();
             if (Player1.Deck.Count >= 1 && Player2.Deck.Count >= 1)
             {
                 Card player1Card = Player1.DrawCard();
@@ -66,19 +66,17 @@ namespace CardWar
             }
             throw new Exception("Game over " + winner + " is the winner with " + winnerCount + " cards");
         }
-        private void War(Card player1Card, Card player2Card, List<Card> pool)
+        private void War(Card player1Card, Card player2Card, List<Card> cardpool)
         {
             cardpool.Add(player1Card);
             cardpool.Add(player2Card);
             if (player1Card.Value < player2Card.Value)
             {
                 Player2.Deck.AddRange(cardpool);
-                cardpool.Clear();
             }
             else if (player1Card.Value > player2Card.Value)
             {
                 Player1.Deck.AddRange(cardpool);
-                cardpool.Clear();
             }
             else
             {
@@ -98,14 +96,12 @@ namespace CardWar
                         cardpool.Add(lastCard1);
                         cardpool.Add(lastCard2);
                         Player2.Deck.AddRange(cardpool);
-                        cardpool.Clear();
                     }
                     else if (lastCard1.Value > lastCard2.Value)
                     {
                         cardpool.Add(lastCard2);
                         cardpool.Add(lastCard1);
                         Player1.Deck.AddRange(cardpool);
-                        cardpool.Clear();
                     }
                     else
                     {
