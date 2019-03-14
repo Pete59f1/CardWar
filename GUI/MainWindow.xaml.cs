@@ -34,18 +34,10 @@ namespace GUI
             {
                 Terminate();
             }
-            else if (game.Player1.Deck.Count < 1)
-            {
-                Terminate();
-            }
-            else if (game.Player2.Deck.Count < 1)
-            {
-                Terminate();
-            }
             else
             {
                 game.Turn();
-                ImagePlayerOne.Source = new BitmapImage(new Uri(game.Player1.Deck[1].Picture));
+                //ImagePlayerOne.Source = new BitmapImage(new Uri(game.Player1.Deck[1].Picture));
             }
         }
 
