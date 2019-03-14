@@ -32,7 +32,7 @@ namespace GUI
         {
             if (game.TurnCount >= turns)
             {
-                Terminate();
+                //Slut spil
             }
             else
             {
@@ -90,11 +90,12 @@ namespace GUI
             NumberOfTurnsLabel.Content = "Number of turns " + game.TurnCount + " out of " + turns;
         }
 
-        public void Terminate()
+        public void Terminate(IPublisher publisher)
         {
             Player1CardsLabel.Content = "";
             Player2CardsLabel.Content = "";
             NumberOfTurnsLabel.Content = "";
+            WhoIsTheWinnerLabel.Content = "The winner is " + game.Player1.Name;
 
             NextTurnButton.IsEnabled = false;
             NumberOfTurnsLabel.IsEnabled = false;

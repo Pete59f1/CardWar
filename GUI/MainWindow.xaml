@@ -11,7 +11,7 @@
         <Image Name="ImagePlayerTwo" IsEnabled="False" HorizontalAlignment="Left" Height="200" Margin="340,48,0,0" VerticalAlignment="Top" Width="150"/>
         <Button Name="NextTurnButton" IsEnabled="False" Content="Next Turn" HorizontalAlignment="Left" Margin="220,130,0,0" VerticalAlignment="Top" Width="75" Click="NextTurnButton_Click" Height="30" RenderTransformOrigin="0.12,0.533"/>
         <Label Name="NumberOfTurnsLabel" IsEnabled="False" HorizontalAlignment="Left" Margin="168,365,0,0" VerticalAlignment="Top" Height="30" Width="182"/>
-        <Label Name="WhoIsTheWinnerLabel" IsEnabled="False" Content="The winner is " HorizontalAlignment="Left" Margin="627,336,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,-0.692"/>
+        <Label Name="WhoIsTheWinnerLabel" IsEnabled="False" Content="The winner is " HorizontalAlignment="Left" Margin="627,336,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.184,-0.692" Width="155"/>
         <TextBox Name="Player1TB" HorizontalAlignment="Left" Height="23" Margin="627,69,0,0" TextWrapping="Wrap" ToolTip="Player 1 name" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="Player2TB" HorizontalAlignment="Left" Height="23" Margin="627,127,0,0" TextWrapping="Wrap" ToolTip="PLayer 2 name" VerticalAlignment="Top" Width="120"/>
         <Button Name="NewGameButton" Content="Start new game" HorizontalAlignment="Left" Margin="627,247,0,0" VerticalAlignment="Top" Width="103" Click="NewGameButton_Click"/>

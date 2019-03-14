@@ -41,31 +41,16 @@ namespace CardWar
                 Card player1Card = Player1.DrawCard();
                 Card player2Card = Player2.DrawCard();
                 War(player1Card, player2Card, cardpool);
-            }
-            else
-            {
-                EndGame();
-            }
 
-            TurnCount++;
-            NotifySubscribers();
-        }
-        private void EndGame()
-        {
-            string winner;
-            int winnerCount;
-            if (Player1.Deck.Count > Player2.Deck.Count)
-            {
-                winner = Player1.Name;
-                winnerCount = Player1.Deck.Count;
+                TurnCount++;
+                NotifySubscribers();
             }
             else
             {
-                winner = Player2.Name;
-                winnerCount = Player2.Deck.Count;
+                NotifySubsGameEnd();
             }
-            throw new Exception("Game over " + winner + " is the winner with " + winnerCount + " cards");
         }
+
         private void War(Card player1Card, Card player2Card, List<Card> cardpool)
         {
             cardpool.Add(player1Card);
@@ -110,10 +95,11 @@ namespace CardWar
                 }
                 else
                 {
-                    EndGame();
+                    NotifySubsGameEnd();
                 }
             }
         }
+
 
         public void RegisterSubscriber(ISubscriber observer)
         {
@@ -130,6 +116,13 @@ namespace CardWar
             foreach (ISubscriber sub in subs)
             {
                 sub.Update(this);
+            }
+        }
+        public void NotifySubsGameEnd()
+        {
+            foreach (ISubscriber sub in subs)
+            {
+                sub.Terminate(this);
             }
         }
     }

@@ -9,5 +9,6 @@ namespace CardWar
     public interface ISubscriber
     {
         void Update(IPublisher publisher);
+        void Terminate(IPublisher publisher);
     }
 }
