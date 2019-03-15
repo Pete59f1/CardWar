@@ -95,7 +95,7 @@ namespace GUI
             Player1CardsLabel.Content = "";
             Player2CardsLabel.Content = "";
             NumberOfTurnsLabel.Content = "";
-            WhoIsTheWinnerLabel.Content = "The winner is " + game.Player1.Name;
+            WhoIsTheWinnerLabel.Content = GetWinner();
 
             NextTurnButton.IsEnabled = false;
             NumberOfTurnsLabel.IsEnabled = false;
@@ -107,6 +107,25 @@ namespace GUI
             Player2TB.IsEnabled = true;
             NumbersofTurnsTB.IsEnabled = true;
             NewGameButton.IsEnabled = true;
+        }
+
+        private string GetWinner()
+        {
+            string winner = "";
+
+            if (game.Player1.Deck.Count > game.Player2.Deck.Count)
+            {
+                winner = "The winner is " + game.Player1.Name;
+            }
+            else if (game.Player1.Deck.Count < game.Player2.Deck.Count)
+            {
+                winner = "The winner is " + game.Player2.Name;
+            }
+            else
+            {
+                winner = "Its a tie!";
+            }
+            return winner;
         }
     }
 }
