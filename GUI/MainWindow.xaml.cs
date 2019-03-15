@@ -32,7 +32,7 @@ namespace GUI
         {
             if (game.TurnCount >= turns)
             {
-                //Slut spil
+                WhoIsTheWinnerLabel.Content = GetWinner();
             }
             else
             {
@@ -77,6 +77,7 @@ namespace GUI
             NextTurnButton.IsEnabled = true;
             NumberOfTurnsLabel.IsEnabled = true;
             WhoIsTheWinnerLabel.IsEnabled = true;
+            WhoIsTheWinnerLabel.Content = "";
             Player1CardsLabel.IsEnabled = true;
             Player2CardsLabel.IsEnabled = true;
 
@@ -111,15 +112,15 @@ namespace GUI
 
         private string GetWinner()
         {
-            string winner = "";
+            string winner = "The winner is ";
 
             if (game.Player1.Deck.Count > game.Player2.Deck.Count)
             {
-                winner = "The winner is " + game.Player1.Name;
+                winner += game.Player1.Name;
             }
             else if (game.Player1.Deck.Count < game.Player2.Deck.Count)
             {
-                winner = "The winner is " + game.Player2.Name;
+                winner += game.Player2.Name;
             }
             else
             {
