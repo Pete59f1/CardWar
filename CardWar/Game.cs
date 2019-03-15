@@ -32,7 +32,6 @@ namespace CardWar
             Player1.Deck = deck1;
             Player2.Deck = deck2;
         }
-
         public void Turn()
         {
             List<Card> cardpool = new List<Card>();
@@ -105,12 +104,10 @@ namespace CardWar
         {
             subs.Add(observer);
         }
-
         public void RemoveSubscriber(ISubscriber observer)
         {
             subs.Remove(observer);
         }
-
         public void NotifySubscribers()
         {
             foreach (ISubscriber sub in subs)

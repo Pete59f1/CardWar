@@ -28,11 +28,12 @@ namespace GUI
             InitializeComponent();
         }
 
+
         private void NextTurnButton_Click(object sender, RoutedEventArgs e)
         {
             if (game.TurnCount >= turns)
             {
-                WhoIsTheWinnerLabel.Content = GetWinner();
+                Reset();
             }
             else
             {
@@ -40,10 +41,25 @@ namespace GUI
                 //ImagePlayerOne.Source = new BitmapImage(new Uri(game.Player1.Deck[1].Picture));
             }
         }
-
         private void NewGameButton_Click(object sender, RoutedEventArgs e)
         {
-            game = new Game(Player1TB.Text, Player2TB.Text);
+            if (string.IsNullOrWhiteSpace(Player1TB.Text) && string.IsNullOrWhiteSpace(Player2TB.Text))
+            {
+                game = new Game("Player 1", "Player 2");
+            }
+            else if (string.IsNullOrWhiteSpace(Player1TB.Text) && !string.IsNullOrWhiteSpace(Player2TB.Text))
+            {
+                game = new Game("Player 1", Player2TB.Text);
+            }
+            else if (!string.IsNullOrWhiteSpace(Player1TB.Text) && string.IsNullOrWhiteSpace(Player2TB.Text))
+            {
+                game = new Game(Player1TB.Text, "Player 2");
+            }
+            else
+            {
+                game = new Game(Player1TB.Text, Player2TB.Text);
+            }
+
             game.RegisterSubscriber(this);
             int tryparser;
 
@@ -65,14 +81,20 @@ namespace GUI
             StartUp();
         }
 
+
         public void Update(IPublisher publisher)
         {
             Player1CardsLabel.Content = game.Player1.Name + " has " + game.Player1.Deck.Count + " cards left in deck";
             Player2CardsLabel.Content = game.Player2.Name + " has " + game.Player2.Deck.Count + " cards left in deck";
             NumberOfTurnsLabel.Content = "Number of turns " + game.TurnCount + " out of " + turns;
         }
+        public void Terminate(IPublisher publisher)
+        {
+            Reset();
+        }
 
-        public void StartUp()
+
+        private void StartUp()
         {
             NextTurnButton.IsEnabled = true;
             NumberOfTurnsLabel.IsEnabled = true;
@@ -90,8 +112,7 @@ namespace GUI
             Player2CardsLabel.Content = game.Player2.Name + " has " + game.Player2.Deck.Count + " cards left in deck";
             NumberOfTurnsLabel.Content = "Number of turns " + game.TurnCount + " out of " + turns;
         }
-
-        public void Terminate(IPublisher publisher)
+        private void Reset()
         {
             Player1CardsLabel.Content = "";
             Player2CardsLabel.Content = "";
@@ -109,10 +130,9 @@ namespace GUI
             NumbersofTurnsTB.IsEnabled = true;
             NewGameButton.IsEnabled = true;
         }
-
         private string GetWinner()
         {
-            string winner = "The winner is ";
+            string winner = "Game over: The winner is ";
 
             if (game.Player1.Deck.Count > game.Player2.Deck.Count)
             {
