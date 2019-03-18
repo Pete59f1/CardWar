@@ -38,7 +38,6 @@ namespace GUI
             else
             {
                 game.Turn();
-                //ImagePlayerOne.Source = new BitmapImage(new Uri(game.Player1.Deck[1].Picture));
             }
         }
         private void NewGameButton_Click(object sender, RoutedEventArgs e)
