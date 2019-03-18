@@ -114,9 +114,6 @@ namespace GUI
         }
         private void Reset()
         {
-            Player1CardsLabel.Content = "";
-            Player2CardsLabel.Content = "";
-            NumberOfTurnsLabel.Content = "";
             WhoIsTheWinnerLabel.Content = GetWinner();
 
             NextTurnButton.IsEnabled = false;
